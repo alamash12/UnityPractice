@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class background : MonoBehaviour
 {
+    [SerializeField][Range(1f, 20f)] float speed = 3f;
+    [SerializeField] float posValue;
 
-    public float moveSpeed;
+    Vector2 startPos;
+    float newPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPos = transform.position;
     }
 
-
-    private void FixedUpdate()
+    private void Update()
     {
-        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        newPos = Mathf.Repeat(Time.time * speed, posValue);
+        transform.position = startPos + Vector2.left * newPos;
     }
 }
