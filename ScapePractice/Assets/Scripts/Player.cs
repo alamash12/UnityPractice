@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         {
             isGround = false;
             coll.isTrigger = true;
-            rayHit.collider.gameObject.GetComponent<Platform>().Enable();
+            rayHit.collider.gameObject.GetComponent<Platform>().TemporaryDisable();
         }
         // 낙하중일때 DownRay 실행
         if (rigid.velocity.y < 0)

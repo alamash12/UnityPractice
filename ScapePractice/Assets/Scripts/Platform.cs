@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+
     Collider2D coll;
     WaitForFixedUpdate waitf = new WaitForFixedUpdate();
 
+    public float moveSpeed;
+    
     private float cooltime = 0.3f;
 
     private void Awake()
@@ -14,7 +18,12 @@ public class Platform : MonoBehaviour
         coll = GetComponent<Collider2D>();
     }
 
-    public void Enable()
+    private void FixedUpdate()
+    {
+        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+    }
+
+    public void TemporaryDisable()
     {
         StartCoroutine(Cooltime());
     }
